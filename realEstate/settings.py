@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "realEstateApp",
+    "blog",
     "rest_framework",
     "rest_framework.authtoken",
     "corsheaders",
