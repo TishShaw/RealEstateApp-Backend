@@ -22,3 +22,12 @@ class Property(models.Model):
 class PropertyImage(models.Model):
     property = models.ForeignKey(Property, on_delete=models.CASCADE, related_name='images')
     image = models.ImageField(upload_to='images')
+   
+class Category(models.Model):
+    name = models.CharField(max_length=255, null=True)
+    date_added = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+
+    def __str__(self):
+        return self.name 
+
+    

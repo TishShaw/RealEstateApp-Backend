@@ -24,4 +24,6 @@ urlpatterns = [
     # Rest Framework URLs
     path("", include("realEstateApp.urls")),
     path("", include("blog.urls")),
+    path("", include("user.urls")),
+    path('api/', include('djoser.urls')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

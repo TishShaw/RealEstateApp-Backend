@@ -42,8 +42,10 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "djoser",
     "realEstateApp",
     "blog",
+    "user",
     "rest_framework",
     "rest_framework.authtoken",
     "corsheaders",
@@ -143,6 +145,16 @@ TIME_ZONE = "UTC"
 USE_I18N = True
 
 USE_TZ = True
+
+# Djoser is a Django REST framework package for handling authentication-related views
+DJOSER = {
+    'LOGIN_FIELD': 'email',
+    'USER_CREATE_PASSWORD_RETYPE': True,
+    'SERIALIZERS': {
+        'user_create': 'user.serializers.UserCreateSerializer',
+        'user': 'user.serializers.UserCreateSerializer'
+    }
+}
 
 
 # Static files (CSS, JavaScript, Images)
