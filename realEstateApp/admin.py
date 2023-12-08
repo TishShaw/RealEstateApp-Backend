@@ -4,11 +4,13 @@ from django.contrib.admin.widgets import ForeignKeyRawIdWidget
 from .models import PropertyImage
 from .models import Property
 from blog.models import Blog
+from user.models import User
 
 # Register your models here.
 admin.site.register(Property)
 admin.site.register(PropertyImage)
 admin.site.register(Blog)
+admin.site.register(User)
 
 class PropertyImageForm(forms.ModelForm):
     class Meta:

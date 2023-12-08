@@ -10,6 +10,7 @@ djangorestframework = "*"
 django-cors-headers = "*"
 django-storages = "*"
 boto3 = "*"
+djoser = "*"
 
 [dev-packages]
 
