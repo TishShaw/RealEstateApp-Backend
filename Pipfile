@@ -11,6 +11,7 @@ django-cors-headers = "*"
 django-storages = "*"
 boto3 = "*"
 djoser = "*"
+gunicorn ="*"
 
 [dev-packages]
 
