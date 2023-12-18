@@ -1,1 +1,1 @@
-web: gunicorn realty-homes.wsgi
+web: gunicorn realEstate.wsgi
