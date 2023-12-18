@@ -6,8 +6,6 @@ class Blog(models.Model):
     author = models.CharField(max_length=255, null=True)
     slug = models.SlugField(blank=True, unique=True)
     image = models.ImageField(upload_to='images', null=True, blank=True)
-    read_time = models.IntegerField(null=True)
-    tags = models.CharField(max_length=255, null=True)
     date_added = models.DateTimeField(auto_now_add=True, null=True, blank=True)
 
     def __str__(self):
