@@ -13,13 +13,15 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 from pathlib import Path
 
-with open('.env', 'r') as file:
-    for line in file:
-        if line.startswith('#') or not line.strip():
-            continue
-        # Split key and value
-        key, value = line.strip().split('=', 1)
-        os.environ[key] = value
+try:
+    with open('.env', 'r') as file:
+        for line in file:
+            if line.startswith('#') or not line.strip():
+                continue
+            key, value = line.strip().split('=', 1)
+            os.environ[key] = value
+except FileNotFoundError:
+    pass
         
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
