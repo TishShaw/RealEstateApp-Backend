@@ -11,12 +11,16 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 import os
-from dotenv import load_dotenv
 from pathlib import Path
 
-dotenv_path = os.path.join(os.path.dirname(__file__), '../.env')
-load_dotenv(dotenv_path)
-
+with open('.env', 'r') as file:
+    for line in file:
+        if line.startswith('#') or not line.strip():
+            continue
+        # Split key and value
+        key, value = line.strip().split('=', 1)
+        os.environ[key] = value
+        
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -90,11 +94,11 @@ WSGI_APPLICATION = "realEstate.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME':  str(os.getenv('DATABASE_NAME')),
-        'USER': str(os.getenv('DATABASE_USER')),
-        'PASSWORD': str(os.getenv('DATABASE_PASSWORD')),
-        'HOST': str(os.getenv('DATABASE_HOST')),
-        'PORT': str(os.getenv('DATABASE_PORT')),
+        'NAME':  os.environ.get('DATABASE_NAME'),
+        'USER': os.environ.get('DATABASE_USER'),
+        'PASSWORD':os.environ.get('DATABASE_PASSWORD'),
+        'HOST': os.environ.get('DATABASE_HOST'),
+        'PORT': os.environ.get('DATABASE_PORT'),
     }
 }
 
@@ -177,8 +181,8 @@ AWS_STORAGE_BUCKET_NAME = 'empire-estate'
 
 AWS_DEFAULT_ACL = 'public-read'
 
-AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
-AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 
 AWS_QUERYSTRING_AUTH = False
 
