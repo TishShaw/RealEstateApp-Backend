@@ -17,6 +17,8 @@ class Property(models.Model):
     date_added = models.DateTimeField(auto_now_add=True, null=True, blank=True)
 
     def __str__(self):
+
+
         return self.title
 
 class PropertyImage(models.Model):
