@@ -5,7 +5,7 @@ name = "pypi"
 
 [packages]
 django = "==4.2.7"
-psycopg2-binary = "*"
+psycopg2-binary = "==2.9.9"
 djangorestframework = "==3.14.0"
 django-cors-headers = "==4.3.1"
 django-storages = "==1.14.2"
@@ -57,6 +57,12 @@ typing-extensions = "==4.9.0"
 urllib3 = "==2.0.7"
 webdriver-manager = "==4.0.1"
 wsproto = "==1.2.0"
+distlib = "==0.3.8"
+filelock = "==3.13.1"
+pipenv = "==2023.11.15"
+platformdirs = "==4.1.0"
+virtualenv = "==20.25.0"
+whitenoise = "==6.6.0"
 
 [dev-packages]
 
