@@ -1,4 +1,3 @@
-# In your models.py or a dedicated file where you customize Django's auth models
 from django.db import models
 from realEstateApp.models import Property
 
@@ -9,7 +8,7 @@ class User(models.Model):
     password = models.CharField(verbose_name='password', max_length=255)
     email = models.EmailField(verbose_name='email', max_length=255, unique=True)
     profile_photo = models.ImageField(upload_to='images', null=True, blank=True)
-    favorite_properties = models.ManyToManyField(Property, related_name='custom_user_favorite_properties')
+    favorite_properties = models.ManyToManyField(Property, related_name='custom_user_favorite_properties', blank=True)
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
