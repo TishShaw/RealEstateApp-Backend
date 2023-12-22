@@ -1,9 +1,9 @@
 from django.db import models
-
+from django.utils.text import slugify
 class Property(models.Model):
     title = models.CharField(max_length=255, null=True)
     slug = models.SlugField(blank=True, unique=True)
-    description = models.TextField(max_length=255, null=True)
+    description = models.TextField(null=True, blank=True, default='', max_length=5000)
     price = models.DecimalField(max_digits=10, decimal_places=2, null=True)
     num_of_bedrooms = models.DecimalField(null=True, max_digits=5, decimal_places=2, default=0)
     num_of_bathrooms = models.DecimalField(null=True, max_digits=5, decimal_places=2, default=0)
@@ -15,10 +15,11 @@ class Property(models.Model):
     amenities = models.CharField(max_length=255, null=True)
     listing_status = models.CharField(max_length=255, null=True)
     date_added = models.DateTimeField(auto_now_add=True, null=True, blank=True)
-
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
     def __str__(self):
-
-
         return self.title
 
 class PropertyImage(models.Model):

@@ -10,7 +10,6 @@ class UserFavoritesList(generics.ListCreateAPIView):
     queryset = UserFavorites.objects.all()
     serializer_class = UserFavoritesSerializer
 
-
 class UserUserFavoritesDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = UserFavorites.objects.all()
     serializer_class = UserFavoritesSerializer
