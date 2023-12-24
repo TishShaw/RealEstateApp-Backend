@@ -21,7 +21,7 @@ class Property(models.Model):
         return self.title
 
 class PropertyImage(models.Model):
-    property = models.ForeignKey(Property, on_delete=models.CASCADE, related_name='images', to_field='slug')
+    property = models.ForeignKey(Property, on_delete=models.CASCADE, related_name='images')
     image = models.ImageField(upload_to='images')
    
 class Category(models.Model):
