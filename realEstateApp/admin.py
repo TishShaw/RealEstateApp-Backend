@@ -7,10 +7,15 @@ from blog.models import Blog
 from user.models import User
 
 # Register your models here.
-admin.site.register(Property)
+
 admin.site.register(PropertyImage)
 admin.site.register(Blog)
-admin.site.register(User)
+
+class PropertyAdmin(admin.ModelAdmin):
+    list_display = ('slug', 'title', 'price')  # Ensure 'id' is not here
+    ordering = ('slug',)  # Use 'slug' or other fields for ordering
+    # ... any other configurations ...
+admin.site.register(Property, PropertyAdmin)
 
 class PropertyImageForm(forms.ModelForm):
     class Meta:
