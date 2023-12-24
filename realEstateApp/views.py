@@ -7,7 +7,5 @@ class PropertyList(generics.ListCreateAPIView):
     serializer_class = PropertySerializer
 
 class PropertyDetail(generics.RetrieveUpdateDestroyAPIView):
-    model = Property
-    lookup_field = 'slug'
     queryset = Property.objects.all()
     serializer_class = PropertySerializer

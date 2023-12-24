@@ -11,4 +11,4 @@ class PropertySerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Property
-        fields = ('title', 'slug', 'description', 'price', 'num_of_bedrooms', 'num_of_bathrooms', 'sqft', 'address', 'city', 'state', 'zip_code', 'amenities', 'listing_status', 'date_added', 'images')
+        fields = ('id', 'title', 'slug', 'description', 'price', 'num_of_bedrooms', 'num_of_bathrooms', 'sqft', 'address', 'city', 'state', 'zip_code', 'amenities', 'listing_status', 'date_added', 'images')

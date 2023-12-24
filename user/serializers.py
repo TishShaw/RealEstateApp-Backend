@@ -1,15 +1,30 @@
-from djoser.serializers import UserCreateSerializer
 from rest_framework import serializers
-from .models import User, UserFavorites
+from django.contrib.auth.models import User
+from .models import UserProfile
+from realEstateApp.serializers import PropertySerializer
 
-class UserCreateSerializer(UserCreateSerializer):
-    favorite_properties = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
-    
+
+class UserProfileSerializer(serializers.ModelSerializer):
+    favorites = PropertySerializer(many=True, read_only=True)
+
+    class Meta:
+        model = UserProfile
+        fields = ['favorites']
+
+class UserSerializer(serializers.ModelSerializer):
+    userprofile = UserProfileSerializer(read_only=True)
     class Meta:
         model = User
-        fields = ('id', 'first_name', 'last_name', 'username', 'email', 'password', 'profile_photo', 'favorite_properties', )
+        fields = ("id", "username", "first_name", "last_name", "email", "password", 'userprofile')
+        extra_kwargs = {'password': {'write_only': True}}
         
-class UserFavoritesSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = UserFavorites
-        fields = ('id', 'property', 'user', 'date', )
+    def create(self, validated_data):
+        password = validated_data.pop("password")
+        user = User(**validated_data)
+        user.set_password(password)
+        user.save()
+        UserProfile.objects.create(user=user)
+
+        return user
+        
+        
