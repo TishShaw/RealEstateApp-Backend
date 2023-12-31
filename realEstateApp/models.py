@@ -3,6 +3,7 @@ class Property(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=255, null=True)
     slug = models.SlugField(blank=True, unique=True)
+    type=models.CharField(max_length=100, default='', null=True)
     description = models.TextField(null=True, blank=True, default='', max_length=5000)
     price = models.DecimalField(max_digits=10, decimal_places=2, null=True)
     num_of_bedrooms = models.DecimalField(null=True, max_digits=5, decimal_places=2, default=0)
