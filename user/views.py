@@ -1,5 +1,4 @@
 from rest_framework import generics, status
-from rest_framework.decorators import api_view
 from rest_framework.views import APIView
 from django.contrib.auth.models import User
 from rest_framework.response import Response
@@ -12,6 +11,7 @@ class UserCreate(generics.CreateAPIView):
     permission_classes = [AllowAny]
     queryset = User.objects.all()
     serializer_class = UserSerializer
+    
     
 class CurrentUserView(generics.RetrieveAPIView):
     permission_classes = [IsAuthenticated]

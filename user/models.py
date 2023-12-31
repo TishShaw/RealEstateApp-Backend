@@ -11,7 +11,7 @@ class UserProfile(models.Model):
 
 class UserFavorites(models.Model):
     property = models.ForeignKey(Property, on_delete=models.CASCADE)
-    user_profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE, null=True)  # Changed to UserProfile
+    user_profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE, null=True) 
     date = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):

@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 from .models import UserProfile
 from realEstateApp.serializers import PropertySerializer
 
-
 class UserProfileSerializer(serializers.ModelSerializer):
     favorites = PropertySerializer(many=True, read_only=True)
 
